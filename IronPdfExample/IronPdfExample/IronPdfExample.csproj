@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
@@ -7,9 +7,137 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\cancelacion-rescate.html" />
+    <None Remove="Assets\cancelacion-rescate.json" />
+    <None Remove="Assets\cert-ap-2.html" />
+    <None Remove="Assets\cert-ap-2.json" />
+    <None Remove="Assets\cert-ap.html" />
+    <None Remove="Assets\cert-ap.json" />
+    <None Remove="Assets\cert-degravamen.html" />
+    <None Remove="Assets\cert-degravamen.json" />
+    <None Remove="Assets\cert-fecu.html" />
+    <None Remove="Assets\cert-fecu.json" />
+    <None Remove="Assets\cert-inclusiondependientes.html" />
+    <None Remove="Assets\cert-inclusiondependientes.json" />
+    <None Remove="Assets\cert-kyc.html" />
+    <None Remove="Assets\cert-kyc.json" />
+    <None Remove="Assets\cert-liq.html" />
+    <None Remove="Assets\cert-liq.json" />
+    <None Remove="Assets\cert-salud.html" />
+    <None Remove="Assets\cert-salud.json" />
+    <None Remove="Assets\cert-vida.html" />
+    <None Remove="Assets\cert-vida.json" />
+    <None Remove="Assets\comp-so.html" />
+    <None Remove="Assets\decl-juridico.html" />
+    <None Remove="Assets\decl-juridico.json" />
+    <None Remove="Assets\den-corr.html" />
+    <None Remove="Assets\den-corr.json" />
+    <None Remove="Assets\DGV-G004-00.html" />
+    <None Remove="Assets\DGV-G004-00.json" />
+    <None Remove="Assets\DGV-G004-01.html" />
+    <None Remove="Assets\DGV-G004-01.json" />
+    <None Remove="Assets\DGV-G004-02.html" />
+    <None Remove="Assets\DGV-G004-02.json" />
+    <None Remove="Assets\DGV-G005-00.html" />
+    <None Remove="Assets\DGV-G005-00.json" />
+    <None Remove="Assets\DGV-G008-00.html" />
+    <None Remove="Assets\DGV-G008-00.json" />
+    <None Remove="Assets\DGV-G008-01.html" />
+    <None Remove="Assets\DGV-G008-01.json" />
+    <None Remove="Assets\doc-liq.html" />
+    <None Remove="Assets\doc-liq.json" />
+    <None Remove="Assets\Images\bandera_grupo_VS.png" />
+    <None Remove="Assets\Images\bn_vidasecurity.jpg" />
+    <None Remove="Assets\Images\Firma.jpg" />
+    <None Remove="Assets\Images\FirmaCertAPCarol.png" />
+    <None Remove="Assets\Images\FirmaHRL.jpg" />
+    <None Remove="Assets\Images\FirmaMAG.jpg" />
+    <None Remove="Assets\Images\firma_csta.jpg" />
+    <None Remove="Assets\Images\firma_notificacion.png" />
+    <None Remove="Assets\Images\footer_VS.png" />
+    <None Remove="Assets\Images\logoLiq.jpg" />
+    <None Remove="Assets\Images\logoPDFLiq.png" />
+    <None Remove="Assets\Images\logo_notificacion.png" />
+    <None Remove="Assets\Images\logo_vidasecurity.png" />
+    <None Remove="Assets\Images\logo_VS.png" />
+    <None Remove="Assets\Images\TimbreCertificadoVS.png" />
+    <None Remove="Assets\informe-siniestralidad.html" />
+    <None Remove="Assets\informe-siniestralidad.json" />
+    <None Remove="Assets\liq-rrvv.html" />
+    <None Remove="Assets\liq-rrvv.json" />
+    <None Remove="Assets\notif-den.html" />
+    <None Remove="Assets\notif-den.json" />
+    <None Remove="Assets\prest-salud.html" />
+    <None Remove="Assets\prest-salud.json" />
+    <None Remove="Assets\rank-aseg.html" />
+    <None Remove="Assets\rank-aseg.json" />
+    <None Remove="Assets\rank-prest.html" />
+    <None Remove="Assets\rank-prest.json" />
+    <None Remove="Assets\sinis-salud.html" />
+    <None Remove="Assets\sinis-salud.json" />
+    <None Remove="Assets\solicitud-rescate.html" />
+    <None Remove="Assets\solicitud-rescate.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\cert-vida.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\cert-vida.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\bandera_grupo_VS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\bn_vidasecurity.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\Firma.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\FirmaCertAPCarol.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\FirmaHRL.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\FirmaMAG.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\firma_csta.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\firma_notificacion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\footer_VS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\logoLiq.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\logoPDFLiq.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\logo_notificacion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\logo_vidasecurity.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\logo_VS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\TimbreCertificadoVS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="IronPdf" Version="2023.4.4" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.10.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.0.13" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.OpenApi" Version="1.5.1" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.7.0" />
+    <PackageReference Include="DotLiquid" Version="2.2.656" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

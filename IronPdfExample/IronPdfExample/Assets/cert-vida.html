@@ -1,0 +1,995 @@
+﻿<html>
+<meta http-equiv='Content-Type' content='text/html' charset='UTF-8' />
+<head runat="server">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .margen {
+            padding-left: 12px;
+            font-size: 12pt;
+            font-family: Arial;
+        }
+
+        .submargen {
+            padding-left: 24px;
+        }
+
+        .negrita {
+            font-weight: bold;
+        }
+
+        .bordertr {
+            border-left: 1px solid;
+            border-top: 3px solid;
+        }
+
+        .bordertd {
+            border-left: 1px solid;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            border-right: 1px solid;
+        }
+    </style>
+</head>
+<body>    
+    <div style='page-break-after: always;'>
+        <!-- <img src="##ROOT##Images/bn_vidasecurity.jpg" alt="Vida Security" /> -->
+        <img src="##ROOT##Images/bn_vidasecurity.jpg" alt="Vida Security" />
+        <br><br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left">
+            <tr>
+                <td style="text-align:left; font-weight: bold; font-size: 12pt; font-family: Arial;"> CARÁTULA UNIFORME PÓLIZA DE SEGURO DE VIDA </td>
+            </tr>
+        </table>
+        <br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial;">
+            <tr>
+                <td width="207px">CÓDIGO CMF DE LA PÓLIZA: </td>
+                <td width="260px" class="negrita" align="left">{{strPolCad}}<!-- POL" + objCaratula.Polcad; --></td>
+                <td width="100px">PÓLIZA N: </td>
+                <td width="200px" class="negrita" align="left"> {{strPoliza}}<!-- html += objCaratula.Numpol;   --></td>
+            </tr>
+        </table>
+        <table width="767px" cellpadding="0" cellspacing="0" class="bordertr">
+            <tr>
+                <td>
+                    <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial; border-top:2px; border-left:1px">
+                        <tr>
+                            <td width="150px"> Contratante: </td>
+                            <td width="450px" class="negrita">
+                                {{strContratante}}
+                                <!-- html += (String.IsNullOrEmpty(objCaratula.AFavorDe)) ? objCaratula.Contratante : objCaratula.AFavorDe;  -->
+                            </td>
+                            <td width="67px"> Rut:</td>
+                            <td width="100px" class="negrita">
+                                {{strRutContratante}}
+                                <!--  html += (String.IsNullOrEmpty(objCaratula.AFavorDe)) ? objCaratula.RutContratante : objCaratula.RutAFavorDe;   -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="150px"> Asegurado: </td>
+                            <td width="400px" class="negrita">{{strAsegurado}}<!-- html += objCaratula.NomAsegurado; --></td>
+                            <td width="67px"> Rut:</td>
+                            <td width="100px" class="negrita">{{strRutAsegurado}}<!-- html += objCaratula.RutAsegurado; --></td>
+                        </tr>
+                        <tr>
+                    </table>
+                    <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial; border-top:2px; border-left:1px">
+                        <td width="150px"> Tipo de Póliza: </td>
+                        <td width="617px">
+                            <label><input type="checkbox" id="TipoPol1" value="TipoPol1" checked>Póliza sin cuenta única de inversión</label>
+                        </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <label><input type="checkbox" id="TipoPol2" value="TipoPol2">Póliza con cuenta única de inversión</label>
+                </td>
+            </tr>
+            <td>&nbsp;</td>
+            <td>
+                <label><input type="checkbox" id="TipoPol3" value="TipoPol3">Póliza con ahorro previsional voluntario (APV)</label>
+            </td>
+            </tr>
+        </table>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial; border-top:2px; border-left:1px">
+            <tr>
+                <td width="67px"> Póliza: </td>
+                <td width="150px">
+                    <label><input type="checkbox" id="Pol1" value="Pol1">Individual</label>
+                </td>
+                <td width="100px">Vigencia:</td>
+                <td width="100px">Inicio:</td>
+                <td width="100px" align="center" class="bordertd">
+                    {{strFechaInicioVigencia}}
+                </td>
+                <td width="200px" align="right">Renovación automática:</td>
+                <td width="50px">
+                    <label><input type="checkbox" id="Renova1" value="Renova1">Si</label>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <label><input type="checkbox" id="Pol2" value="Pol2" checked>Colectiva</label>
+                </td>
+                <td>&nbsp;</td>
+                <td>Término:</td>
+                <td align="center" class="bordertd">
+                    {{strFechaFinVigencia}}
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <label><input type="checkbox" id="Renova2" value="Renova2" checked>No</label>
+                </td>
+            </tr>
+        </table>
+        </td>
+        </tr>
+        </table>
+        <br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial;">
+            <tr>
+                <td>CONDICIONES DE PRIMA</td>
+            </tr>
+        </table>
+        <table width="767px" cellpadding="0" cellspacing="0" class="bordertr">
+            <tr>
+                <td>
+                    <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial; border-top:2px; border-left:1px">
+                        <tr>
+                            <td width="147px"> Monto: </td>
+                            <td width="100px">Moneda: </td>
+                            <td width="140px">Periodo de pago: </td>
+                            <td width="170px">Condiciones: </td>
+                            <td colspan="2" width="210px">Comision total del Corredor: </td>
+                        </tr>
+                        <tr>
+                            <td align="center" class="negrita">
+                                {{strPrimaTotal}}
+                            </td>
+                            <td>
+                                {% if strMoneda == "UF" %}
+                                <label><input type="checkbox" id="Moneda1" value="Moneda1" checked>UF</label>
+                                {% endif %}
+                                {% if strMoneda != "UF" %}
+                                <label><input type="checkbox" id="Moneda1" value="Moneda1">UF</label>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if strPeriodicidad == "A" %}
+                                <label><input type="checkbox" id="Periodo1" value="Periodo1" checked>Anual</label>
+                                {% endif %}
+                                {% if strPeriodicidad != "A" %}
+                                <label><input type="checkbox" id="Periodo1" value="Periodo1">Anual</label>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <label><input type="checkbox" id="Condi1" value="Condi1">Fija</label>
+                            </td>
+                            <td width="170px">
+                                {% if strComision != "0" %}
+                                <label><input type="checkbox" id="Comision1" value="Comision1" checked>Porcentaje</label>
+                                {% endif %}
+                                {% if strComision == "0" %}
+                                <label><input type="checkbox" id="Comision1" value="Comision1">Porcentaje</label>
+                                {% endif %}
+
+                            </td>
+                            <td width="40px" align="center" class="bordertd">
+                                {% if strComision != "0" %}
+                                {{ strComision }}
+                                {% endif %}
+                                {% if strComision == "0" %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                {% if strMoneda == "PS" %}
+                                <label><input type="checkbox" id="Moneda1" value="Moneda1" checked>Peso</label>
+                                {% endif %}
+                                {% if strMoneda != "PS" %}
+                                <label><input type="checkbox" id="Moneda1" value="Moneda1">Peso</label>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if strPeriodicidad == "M" %}
+                                <label><input type="checkbox" id="Periodo1" value="Periodo1" checked>Mensual</label>
+                                {% endif %}
+                                {% if strPeriodicidad != "M" %}
+                                <label><input type="checkbox" id="Periodo1" value="Periodo1">Mensual</label>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <label><input type="checkbox" id="Condi2" value="Condi2" checked>Ajustable según</label>
+                            </td>
+                            <td>
+                                {% if strComision == "0" %}
+                                <label><input type="checkbox" id="Comision1" value="Comision1" checked>No hay Comisión</label>
+                                {% endif %}
+                                {% if strComision != "0" %}
+                                <label><input type="checkbox" id="Comision1" value="Comision1">No hay Comisión</label>
+                                {% endif %}
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                {% if strMoneda == "UF" or strMoneda == "PS" %}
+                                <label><input type="checkbox" id="Moneda3" value="Moneda3">Otra</label>
+                                {% else %}
+                                <label><input type="checkbox" id="Moneda3" value="Moneda3" checked>Otra</label>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if strPeriodicidad == "A" or strPeriodicidad == "M" %}
+                                <label><input type="checkbox" id="Periodo3" value="Periodo3">Otro</label>
+                                {% else %}
+                                <label><input type="checkbox" id="Periodo3" value="Periodo3" checked>Otro</label>
+                                {% endif %}
+                            </td>
+                            <td> contrato</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial;">
+            <tr>
+                <td width="567px">COBERTURAS</td>
+                <td align="center" width="90px">ART N° CG</td>
+                <td width="20px">&nbsp;</td>
+                <td align="center" width="90px">ART N° CP</td>
+            </tr>
+        </table>
+
+
+        <table width="767px" cellpadding="0" cellspacing="0" class="bordertr">
+            <tr>
+                <td>
+                    <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial; border-top:2px; border-left:1px">
+                        <tr>
+                            <td width="267px">&nbsp;</td>
+                            <td align="center" width="120px">Moneda</td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" width="140px">Monto</td>
+                            <td width="20px">&nbsp;</td>
+                            <td width="90px">&nbsp;</td>
+                            <td width="20px">&nbsp;</td>
+                            <td width="90px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {% if strMuerte == "true" and strTipoCobMuerte == "M" %}
+                                <label><input type="checkbox" id="Cob1" value="Cob1" checked>Muerte</label>
+                                {% else %}
+                                <label><input type="checkbox" id="Cob1" value="Cob1">Muerte</label>
+                                {% endif %}
+                            </td>
+                            <td align="center" class="bordertd">
+                                {% if strMuerte == "true" %}
+                                &nbsp; {{strMonedaMuerte}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                {% if strMuerte == "true" and strTipoCobMuerte == "M" %}
+                                {{strCapitalMuerte}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                {% if strMuerte == "true" %}
+                                &nbsp;  {{strARTCGMuerte}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {% if strInvalidez == "true" and strTipoCobInvalidez == "I" %}
+                                <label><input type="checkbox" id="Cob2" value="Cob2" checked>Invalidez</label>
+                                {% else %}
+                                <label><input type="checkbox" id="Cob2" value="Cob2">Invalidez</label>
+                                {% endif %}
+                            </td>
+                            <td align="center" class="bordertd">
+                                {% if strInvalidez == "true" %}
+                                &nbsp;
+                                {{strMonedaInvalidez}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                {% if strInvalidez == "true" and strTipoCobInvalidez == "I" %}
+                                {{strCapitalInvalidez}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                {% if strInvalidez == "true" %}
+                                &nbsp;  {{strARTCGInvalidez}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {% if strTipoCobSobrevivencia == "S" %}
+                                <label><input type="checkbox" id="Cob3" value="Cob3" checked>Sobrevivencia</label>
+                                {% else %}
+                                <label><input type="checkbox" id="Cob3" value="Cob3">Sobrevivencia</label>
+                                {% endif %}
+                            </td>
+                            <td align="center" class="bordertd">
+                                &nbsp; {{strMonedaSobrevivencia}}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                {% if strTipoCobSobrevivencia == "S" %}
+                                {{strCapitalSobrevivencia}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                &nbsp;  {{strARTCGSobrevivencia}}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd"> &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {% if strMuerteAcc == "true" and strTipoCobMuerteAcc == "A" %}
+                                <label><input type="checkbox" id="Cob4" value="Cob4" checked>Muerte Accidental</label>
+                                {% else %}
+                                <label><input type="checkbox" id="Cob4" value="Cob4">Muerte Accidental</label>
+                                {% endif %}
+                            </td>
+                            <td align="center" class="bordertd">
+                                {% if strMuerteAcc == "true" %}
+                                &nbsp; {{strMonedaMuerteAcc}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                {% if strMuerteAcc == "true" and strTipoCobMuerteAcc == "A" %}
+                                {{strCapitalMuerteAcc}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                {% if strMuerteAcc == "true" %}
+                                &nbsp; {{strARTCGMuerteAcc}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd"> &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {% if strOtro == "true" and strTipoCobOtro == "O" %}
+                                <label><input type="checkbox" id="Cob5" value="Cob5" checked>Otra</label>
+                                {% else %}
+                                <label><input type="checkbox" id="Cob5" value="Cob5">Otra</label>
+                                {% endif %}
+                            </td>
+                            <td align="center" class="bordertd">
+                                {% if strOtro == "true" %}
+                                &nbsp; {{strMonedaOtro}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                {% if strOtro == "true" and strTipoCobOtro == "O" %}
+                                {{strCapitalOtro }}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">
+                                {% if strOtro == "true" %}
+                                &nbsp; {{strARTCGOtro}}
+                                {% else %}
+                                &nbsp;
+                                {% endif %}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd"> &nbsp; </td>
+                        </tr>
+                    </table>
+                    <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial; border-top:2px; border-left:1px">
+                        <tr>
+                            <td>
+                                <label><input type="checkbox" id="Cob6" value="Cob6">Esta póliza contiene otras coberturas adicionales, cuyo detalle debe ser consultado en condiciones particulares.</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial;">
+                        <tr>
+                            <td width="367px"> Condiciones especiales de asegurabilidad</td>
+                            <td width="50px">
+                                {% if strPlanEspecial == "S" %}
+                                <label><input type="checkbox" id="EspSi" value="EspSi" checked>Si</label>
+                                {% else %}
+                                <label><input type="checkbox" id="EspSi" value="EspSi">Si</label>
+                                {% endif %}
+                            </td>
+                            <td width="100px">&nbsp;</td>
+                            <td width="50px">
+                                {% if strPlanEspecial != "S" %}
+                                <label><input type="checkbox" id="EspNo" value="EspNo" checked>No</label>
+                                {% else %}
+                                <label><input type="checkbox" id="EspNo" value="EspNo">No</label>
+                                {% endif %}
+                            </td>
+                            <td align="center" width="90px" class="bordertd">
+                                &nbsp; {{strARTCGPlanEspecial}}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" width="90px" class="bordertd">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Período de carencia</td>
+                            <td>
+                                <label><input type="checkbox" id="CarSi" value="CarSi">Si</label>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <label><input type="checkbox" id="CarNo" value="CarNo" checked>No</label>
+                            </td>
+                            <td align="center" class="bordertd">
+                                &nbsp;
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td> Exclusiones</td>
+                            <td>
+                                <label><input type="checkbox" id="ExcSi" value="ExcSi" checked>Si</label>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <label><input type="checkbox" id="ExcNo" value="ExcNo">No</label>
+                            </td>
+                            <td align="center" class="bordertd">
+                                {{ strARTCGExclusiones }}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <br>
+
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial;">
+            <tr>
+                <td>BENEFICIARIOS EN CASO DE FALLECIMIENTO</td>
+            </tr>
+        </table>
+
+        <table width="767px" cellpadding="0" cellspacing="0" class="bordertr">
+            <tr>
+                <td>
+                    <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial;">
+                        <tr>
+                            <td width="567px">
+                                <label><input type="checkbox" id="BeneLey" value="BeneLey">Beneficiarios designados por ley</label>
+                            </td>
+                            <td align="center" width="90px" class="bordertd">&nbsp;</td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" width="90px" class="bordertd"> &nbsp;  </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label><input type="checkbox" id="BeneOtros" value="BeneOtros" checked>Otros beneficiarios</label>
+                            </td>
+                            <td align="center" class="bordertd">
+                                {{ strARTCGBeneficiarios }}
+                            </td>
+                            <td width="20px">&nbsp;</td>
+                            <td align="center" class="bordertd">&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial;">
+            <tr>
+                <td>SISTEMA DE NOTIFICACIÓN CONTRACTUAL</td>
+            </tr>
+        </table>
+        <table width="767px" cellpadding="0" cellspacing="0" class="bordertr">
+            <tr>
+                <td>
+                    <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 10.5pt; font-family: Arial; border-top:2px; border-left:1px">
+                        <tr>
+                            <td colspan="2">El asegurado ha autorizado a la compañía para efectuar las notificaciones asociadas a esta póliza por el siguiente medio:</td>
+                        </tr>
+                        <tr>
+                            <td width="250px">
+                                <label><input type="checkbox" id="Noti1" value="Noti1">e-mail al correo electrónico</label>
+                            </td>
+                            <td width="517px" class="bordertd">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label><input type="checkbox" id="Noti2" value="Noti2">Carta a la siguiente dirección</label>
+                            </td>
+                            <td class="bordertd">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label><input type="checkbox" id="Noti3" value="Noti3" checked>Otro</label>
+                            </td>
+                            <td class="bordertd">
+                                a través del Contratante
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <br>
+    </div>
+</body>
+</html>
+
+    <!-- caratula -->
+    <html>
+    <meta http-equiv='Content-Type' content='text/html' charset='UTF-8' />
+    <head runat="server">
+        <style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .margen {
+                padding-left: 12px;
+                font-size: 12pt;
+                font-family: Arial;
+            }
+
+            .submargen {
+                padding-left: 24px;
+            }
+
+            .negrita {
+                font-weight: bold;
+            }
+
+            .bordertr {
+                border-left: 1px solid;
+                border-top: 3px solid;
+            }
+
+            .bordertd {
+                border-left: 1px solid;
+                border-top: 1px solid;
+                border-bottom: 1px solid;
+                border-right: 1px solid;
+            }
+        </style>
+    </head>
+    <body>       
+        <div style='page-break-after: always;'> 
+            <img src="##ROOT##Images/bn_vidasecurity.jpg" alt="Vida Security" />
+            <br><br>
+            <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left">
+                <tr>
+                    <td style="text-align:justify; font-size: 10pt; font-family: Arial;">
+                        La presente carátula es un resumen de la información más relevante de la póliza y los conceptos fundamentales se
+                        encuentran definidos al reverso. Para una comprensión integral, se debe consultar las condiciones generales y particulares de la póliza. En cada punto se señala el artículo del condicionado general (CG) o condicionado particular (CP) donde puede revisarse el detalle respectivo.
+                        <br>
+                        Nota 1: El asegurado tiene la obligación de entregar la información que la compañía requiera acerca de su estado de riesgo, en los casos y en la forma que determina la normativa vigente. La infracción a esta obligación puede acarrear la terminación del contrato o que no sea pagado el siniestro.
+                        <br><br>
+                        DEFINICIONES
+                        <br>
+                        CÓDIGO CMF DE LA PÓLIZA: Es el Código con que la póliza fue depositada en la Superintendencia de Valores y Seguros, conocido también como “código Pol”. Si la póliza incluye más de uno, se incluye sólo el de la cobertura principal.
+                        <br>
+                        PÓLIZA: Documento justificativo del seguro.
+                        <br>
+                        CERTIFICADO DE COBERTURA: Documento que da cuenta de un seguro emitido con sujeción a los términos de una póliza de seguro colectivo.
+                        <br>
+                        CONTRATANTE: La persona que contrata el seguro con la compañía aseguradora y sobre quien recaen, en general, las obligaciones y cargas del contrato. Puede ser una persona diferente al asegurado.
+                        <br>
+                        ASEGURADO: La persona a quien afecta el riesgo que se transfiere a la compañía aseguradora.
+                        <br>
+                        BENEFICIARIO: La persona que, aun sin ser asegurado, tiene derecho a la indemnización en caso de siniestro.
+                        <br>
+                        TIPO DE PÓLIZA: Según si tienen o no asociada una cuenta única de inversión, las póliza puede ser de los siguientes tipos:
+                        Es sin cuenta única de inversión, cuando sólo incluye el seguro de vida y no hay una cuenta de inversión asociada.
+                        Es con cuenta única de inversión cuando además del seguro de vida, incluye una cuenta de inversión que genera
+                        rentabilidad, garantizada o no, en las condiciones estipuladas.
+                        Es con ahorro previsional voluntario (APV) cuando además del seguro de vida, permite el ahorro de una suma de
+                        dinero asociado al sistema previsional regido por el Decreto Ley 3.500 sobre AFP.
+                        <br>
+                        VIGENCIA: Tiempo durante el cual se extiende la cobertura de riesgo de la póliza contratada.
+                        <br>
+                        RENOVACIÓN: Se refiere a si la póliza se extingue al vencimiento de su plazo o si se renueva.
+                        Es automática cuando se entiende renovada si el cliente o la compañía no deciden terminarla, conforme a la póliza.
+                        Es sin renovación, cuando la póliza se extingue al vencimiento de su vigencia.
+                        <br>
+                        PRIMA: El precio que se cobra por el seguro. Éste incluye los adicionales, en su caso.
+                        <br>
+                        CONDICIONES DE PRIMA: La prima puede ser fija, si el monto es el mismo durante toda la vigencia de la póliza, o puede ser ajustable, si ese precio puede ser modificado conforme a las normas incluidas en la póliza.
+                        <br>
+                        COMISIÓN CORREDOR: Es la parte de la prima que recibe un corredor de seguros, que ha vendido el seguro por cuenta de la compañía. Puede expresarse como un monto fijo o un porcentaje de la prima.
+                        <br>
+                        COBERTURA: El tipo de riesgo cubierto por la póliza.
+                        <br>
+                        CARENCIA: Período establecido en la póliza durante el cual no rige la cobertura del seguro.
+                        <br>
+                        EXCLUSIONES: Aquellos riesgos especificados en la póliza que no son cubiertos por el seguro.
+                        <br>
+                        CONDICIONES ESPECIALES DE ASEGURABILIDAD: Son los requisitos específicos que debe cumplir el asegurado para que la compañía cubra el riesgo y pague el seguro, en caso de siniestro.
+                        <br>
+                        SISTEMA DE NOTIFICACIÓN: Sistema de comunicación que el cliente autoriza para que la compañía le efectúe todas las notificaciones requeridas conforme a la póliza
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
+
+<!-- GeneraHTML -->
+<html>
+<meta http-equiv='Content-Type' content='text/html' charset='UTF-8' />
+<head runat="server">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .margen {
+            padding-left: 12px;
+            font-size: 12pt;
+            font-family: Arial;
+        }
+
+        .submargen {
+            padding-left: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;page-break-after: always;">
+        <img src="##ROOT##Images/bn_vidasecurity.jpg" alt="Vida Security" />
+        <br><br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left">
+            <tr>
+                <td style="text-align:center; font-weight: bold; font-size: 12pt; font-family: Arial;"> CERTIFICADO COBERTURA DE VIDA </td>
+            </tr>
+        </table>
+        <br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 12pt; font-family: Arial;">
+            <tr>
+                <td>
+                    Vida Security, certifica que se encuentran amparados en Póliza de Seguro de Vida Nº {{strPoliza}}  del contratante {{strContratante}}, Rut: {{strRutContratante}}, de vigencia Inicial {{strFechaVigenciaPoliza}}, de acuerdo a lo siguiente:
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 12pt; font-family: Arial;">
+            <tr>
+                <td style="width:185px">Asegurado Titular</td>
+                <td style="width: 380px"> : {{ strCertAsegurado }}</td>
+            </tr>
+            <tr>
+                <td style="width:185px">Rut</td>
+                <td style="width: 380px"> : {{ strCertRutAsegurado }}</td>
+            </tr>
+            <tr>
+                <td style="width:185px">Primera Vigencia</td>
+                <td style="width: 380px"> : {{ strCertFechaPrimeraVigencia }}</td>
+            </tr>
+            <tr>
+                <td style="width:185px">Inicio Vigencia Asegurado</td>
+                <td style="width: 380px"> : {{ strCertInicioVigenciaAsegurado }}</td>
+            </tr>
+            <tr>
+                <td style="width:185px">Fecha de Nacimiento</td>
+                <td style="width: 380px"> : {{ strCertFechanacimiento }}</td>
+            </tr>
+        </table>
+        <br>
+
+        <!-- Coberturas -->
+        {% if lstCapCob %}
+        <table width='767px' cellpadding='0' cellspacing='0' align='center' style='text-align:left; font-size: 12pt; font-family: Arial;'>
+            <tr>
+                <td colspan='4'>Monto Asegurado por Coberturas :</td>
+            </tr>
+            <tr>
+                <td style='width:300px'></td>
+
+                {% for itemReembolso in lstTipoReembolsos %}
+                <td align='center'>{{ itemReembolso.Descripcion }} </td>
+                {% endfor %}
+            </tr>
+            {% for itemCapCob in lstCapCob %}
+            <tr>
+                <td>{{ itemCapCob.NombreComercial }}</td>
+                <td align='center'>{{ itemCapCob.NMB_Moneda }}  {{ itemCapCob.Valor_Capital }}</td>
+                <td align='center'>{{ itemCapCob.NMB_Moneda }}  {{ itemCapCob.Prima }}</td>
+                <td align='center'>{{ itemCapCob.Comision_Interm }}% + IVA</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        {% endif %}
+        <br><br><br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left; font-size: 12pt; font-family: Arial;">
+            <tr>
+                <td>(*) Capital actualizado al {{strFechaCapital}}</td>
+            </tr>
+            <tr>
+                <td>
+                    Esta(s) cobertura(s) se rige(n) según lo inscrito en el registro de pólizas en la CMF: {{strPolCads}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br><br>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:left; font-size: 12pt; font-family: Arial;">
+                    {% if strMuerte == "true" or strInvalidez == "true" or strMuerteAcc == "true" %}
+                    Descripción cobertura(s):
+                    {% endif %}
+
+                    <br><br>
+                </td>
+            </tr>
+            <tr>
+                <td class="margen">
+                    {% if strMuerte == "true" or strMuerteAcc == "true" %}
+                    Fallecimiento: Fallecimiento del asegurado ya sea por causas naturales o accidentales, siempre y cuando las causas no estén descritas en las exclusiones de la póliza.
+                    {% endif %}
+                    <br><br>
+                </td>
+            </tr>
+            <tr>
+                <td class="margen">
+                    {% if strSobrevivencia == "true" %}
+                    Invalidez total y permanente 2/3: El presente seguro cubre en caso de pérdida irreversible y definitiva de 2/3 de la capacidad de trabajo, causado por accidente, enfermedad o debilitamiento de fuerzas físicas.
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td class="margen">
+                    {% if strInvalidez == "true" %}
+                    Invalidez Accidental: Incapacidad Permanente, total o parcial, a raíz de un accidente.
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+
+{% if lstPreeCobert %}
+<html>
+<meta http-equiv='Content-Type' content='text/html' charset='UTF-8' />
+<head runat="server">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .margen {
+            padding-left: 12px;
+            font-size: 12pt;
+            font-family: Arial;
+        }
+
+        .submargen {
+            padding-left: 24px;
+        }
+
+
+
+        .tablePre{
+            border-collapse: collapse;
+            border: 1px solid black;
+            font-size: 12pt;
+            font-family: Arial;
+        }
+
+        .trPre
+        {
+            border: 1px solid black;
+            font-size: 12pt;
+            font-family: Arial;
+        }
+
+        .tdPre
+        {
+            border: 1px solid black;
+            font-size: 12pt;
+            font-family: Arial;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;page-break-after: always;">
+        <img src="##ROOT##Images/bn_vidasecurity.jpg" alt="Vida Security" />
+        <br><br>
+        <span style="text-align:center; font-weight: bold; font-size: 12pt; font-family: Arial;"> PREEXISTENCIAS </span>
+        <br><br>
+
+        {% if lstPreeCobert %}
+        <table width='760px' cellpadding='0' cellspacing='0' class='tablePre'>
+            <tr class='trPre'>
+                <td style='width:230px' align='center' class='trPre'><b>Cobertura</b></td>
+                <td style='width:530px' align='center' class='trPre'><b>Resolución</b></td>
+            </tr>
+
+            {% for preex in lstPreeCobert %}
+
+            <tr class='trPre'>
+                <td style="width:230px;" class='trPre'>
+                    {{preex.Nombre_Coberura}}
+                </td>
+                <td  style="width: 530px;" class='trPre'>
+                    {% for observ in preex.Observaciones %}
+                        {{ observ }} <br>
+                    {% endfor %}
+
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+        <br>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endif %}
+
+
+
+<html>
+<meta http-equiv='Content-Type' content='text/html' charset='UTF-8' />
+<head runat="server">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .margen {
+            padding-left: 12px;
+            font-size: 12pt;
+            font-family: Arial;
+        }
+
+        .submargen {
+            padding-left: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;page-break-after: always;">
+        <img src="##ROOT##Images/bn_vidasecurity.jpg" alt="Vida Security" />
+        <br><br><br><br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="text-align:left">
+            <tr>
+                <td colspan='3' class="margen">
+                    Características del seguro de vida:
+                    <br><br>
+                </td>
+            </tr>
+            <tr>
+                <td width='10px'></td>
+                <td valign='top'>•</td>
+                <td class="margen"> La Compañía indemnizará al beneficiario según lo establecido estipulado en las condiciones particulares de la póliza colectiva, el monto establecido como capital en la cobertura de fallecimiento, en caso que el fallecimiento sea por causas naturales o accidentales. </td>
+            </tr>
+            <tr>
+                <td width='10px'></td>
+                <td valign='top'>•</td>
+                <td class="margen">
+                    Los requisitos de asegurabilidad están establecidos en las condiciones particulares de la póliza.
+                </td>
+            </tr>
+            <tr>
+                <td width='10px'></td>
+                <td valign='top'>•</td>
+                <td class="margen">
+                    Los Beneficiarios serán designados por el asegurado titular, en el formulario de incorporación o en el formulario de designación de beneficiarios.
+                </td>
+            </tr>
+            <tr>
+                <td width='10px'></td>
+                <td valign='top'>•</td>
+                <td class="margen">
+                    Las exclusiones del seguro se encuentran estipuladas en las condiciones generales que amparan la póliza colectiva.
+                    <br><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='3' class="margen">
+                    <br><br><br>
+                    Este certificado tiene validez mientras el asegurado se encuentre vigente en la póliza indicada.
+                </td>
+            </tr>
+        </table>
+        <br><br><br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="font-size: 10pt; font-family: Arial; text-align:center">
+            <tr>
+                <td>
+                    <img src="##ROOT##Images/{{strRutaFirma}}" alt="Firma" />
+                </td>
+            </tr>
+            <tr>
+                <td>________________________________________</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>{{strPieFirma}}</label>
+                </td>
+            </tr>
+        </table>
+        <br><br><br><br><br>
+        <table width="767px" cellpadding="0" cellspacing="0" style="font-size: 10pt; font-family: Arial; text-align:left">
+            <tr>
+                <td>  {{ fechaReporte }} </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
