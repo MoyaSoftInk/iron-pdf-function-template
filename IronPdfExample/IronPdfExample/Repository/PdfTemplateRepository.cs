@@ -3,19 +3,24 @@ using DotLiquid;
 using IronPdfExample.Configurations;
 using IronPdfExample.Converter;
 using IronPdfExample.Model;
+using IronPdfExample.Query.GetTemplate.Interface;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
 using Newtonsoft.Json;
 
 namespace IronPdfExample.Repository;
 
-public sealed class PdfTemplateRepository 
+public sealed class PdfTemplateRepository : IPdfTemplateRepository
 {
     private readonly static ConcurrentDictionary<string, PdfTemplate> templateCache = new ConcurrentDictionary<string, PdfTemplate>();
 
    
     private readonly string _root;
+    private readonly TelemetryClient _telemetryClient;
 
-    public PdfTemplateRepository(RootConfiguration root)
+    public PdfTemplateRepository(RootConfiguration root, TelemetryClient telemetryClient)
     {
+        _telemetryClient = telemetryClient;
         _root = root.Root;
     }
 
@@ -26,6 +31,7 @@ public sealed class PdfTemplateRepository
     /// <returns>PDF Template from FS</returns>
     public PdfTemplate GetTemplate(string templateName)
     {
+        _telemetryClient.TrackTrace($"SOLICITA TEMPLATE {templateName}", SeverityLevel.Information);
 
         if (templateName == string.Empty)
         {
@@ -97,7 +103,8 @@ public sealed class PdfTemplateRepository
         }
         catch (IOException ex)
         {
-            Exception exn = new Exception(String.Format("Template #{0} sin print options: {1}", templateName, ex.Message), ex);
+            _telemetryClient.TrackTrace($"Template #{templateName} sin print options: {ex.Message}", SeverityLevel.Error);
+            Exception exn = new Exception($"Template #{templateName} sin print options: {ex.Message}", ex);
             throw exn;
         }
         finally

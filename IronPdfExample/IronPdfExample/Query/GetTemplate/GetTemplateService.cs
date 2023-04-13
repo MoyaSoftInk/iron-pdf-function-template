@@ -3,31 +3,47 @@ using IronPdfExample.Converter;
 using Newtonsoft.Json;
 using IronPdfExample.Model;
 using IronPdfExample.Repository;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using IronPdfExample.Query.GetTemplate.Interface;
 
 namespace IronPdfExample.Query.GetTemplate;
 
-public class GetTemplateService
+public class GetTemplateService : IGetTemplateService
 {
-    private readonly PdfTemplateRepository _templateRepository;
+    private readonly IPdfTemplateRepository _templateRepository;
+    private readonly TelemetryClient _telemetryClient;
 
-    public GetTemplateService(PdfTemplateRepository templateRepository)
+    public GetTemplateService(IPdfTemplateRepository templateRepository, TelemetryClient telemetryClient)
     {
         _templateRepository = templateRepository;
+        _telemetryClient = telemetryClient;
     }
 
-    public async Task<PdfResponse>  Handle(GetTemplateRequest request, CancellationToken cancellationToken)
+    public async Task<PdfResponse> Handle(GetTemplateRequest request, CancellationToken cancellationToken)
     {
-        if (request == null) throw new ArgumentNullException("request can't be null");
-        if (request.Template == null) throw new ArgumentNullException("request.Template can't be null");
-        if (request.Data == null) throw new System.ArgumentNullException("request.Data can't be null");
+        try
+        {
+            if (request == null) throw new ArgumentNullException("request can't be null");
+            if (request.Template == null) throw new ArgumentNullException("request.Template can't be null");
+            if (request.Data == null) throw new System.ArgumentNullException("request.Data can't be null");
 
-        PdfTemplate template = _templateRepository.GetTemplate(request.Template);
+            PdfTemplate template = _templateRepository.GetTemplate(request.Template);
 
-        if (template == null) throw new KeyNotFoundException(string.Format("template {0} not found", request.Template));
+            if (template == null)
+                throw new KeyNotFoundException(string.Format("template {0} not found", request.Template));
 
-        Pdf pdf = await GetPdf(template, request.Data, request.Password);
-        return MapPdf(pdf);
+            Pdf pdf = await GetPdf(template, request.Data, request.Password);
+            return MapPdf(pdf);
+        }
+        catch (Exception ex)
+        {
+
+            _telemetryClient.TrackTrace($"Error: {ex.Message}", SeverityLevel.Error);
+            throw ex;
+        }
     }
+
     private PdfResponse MapPdf(Pdf pdf)
     {
         return new PdfResponse { Base64 = pdf?.Base64 };

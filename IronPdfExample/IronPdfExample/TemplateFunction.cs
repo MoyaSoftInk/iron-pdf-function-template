@@ -2,6 +2,7 @@ using System.Net;
 using System.Text.Json;
 using IronPdfExample.Model;
 using IronPdfExample.Query.GetTemplate;
+using IronPdfExample.Query.GetTemplate.Interface;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
@@ -11,9 +12,9 @@ namespace IronPdfExample;
 
 public class TemplateFunction
 {
-    private readonly GetTemplateService _getTemplateService;
+    private readonly IGetTemplateService _getTemplateService;
 
-    public TemplateFunction(GetTemplateService getTemplateService)
+    public TemplateFunction(IGetTemplateService getTemplateService)
     {
         _getTemplateService = getTemplateService;
     }
